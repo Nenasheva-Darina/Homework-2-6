@@ -1,0 +1,21 @@
+.backButton {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 18px;
+  color: #1e5a88;
+  background-color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.backButton:hover {
+  background-color: #373d41;
+  color: #ffffff;
+}
+
+.backButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

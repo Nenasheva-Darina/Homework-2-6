@@ -15,20 +15,20 @@
   color: #333;
   margin-bottom: 20px;
   max-width: 80%;
-  line-height: 1.4; /* Добавим межстрочный интервал для читабельности */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Добавим небольшую тень */
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .quote span {
-  display: inline; /* Чтобы span был в одной строке с текстом */
+  display: inline;
 }
 
 .quote .boldPart {
   font-size: 40px;
-  display: block; /* Чтобы каждая часть была на новой строке */
-  font-weight: bold; /* Делаем первую часть жирной */
-  line-height: 1.2; /* Чуть уменьшим межстрочный для boldPart */
-  margin-bottom: 5px; /* Добавим небольшой отступ */
+  display: block;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 5px;
 }
 .color {
   color: #1e5a88;
@@ -36,10 +36,10 @@
 
 .quote .regularPart {
   font-size: 17px;
-  display: block; /* Чтобы каждая часть была на новой строке */
+  display: block;
   font-weight: 200;
-  font-weight: 300; /* Увеличим толщину шрифта */
-  line-height: 1.4; /* Подгоним межстрочный для regularPart */
+  font-weight: 300;
+  line-height: 1.4;
 }
 
 .author {
@@ -48,8 +48,8 @@
 
   color: #3f3e3e;
   font-style: italic;
-  text-align: right; /* Выравнивание по правому краю */
-  width: 80%; /* Ширина автора должна совпадать с шириной цитаты */
+  text-align: right;
+  width: 80%;
 }
 
 .menu {

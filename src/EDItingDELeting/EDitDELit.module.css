@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-left: 10px; /* Добавлено пространство слева */
+  margin-left: 10px;
 }
 
 .boxIMG img {
@@ -12,59 +12,44 @@
   width: 24px;
   height: 24px;
   cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.2s ease; /*  Добавляем transform  */
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .boxIMG img:hover {
-  opacity: 0.8; /*  Немного увеличиваем  */
-  transform: scale(1.1); /*  Небольшое увеличение при наведении  */
+  opacity: 0.8;
+  transform: scale(1.1);
 }
-
-/* .newToDoInputList {
-  font-style: italic;
-  margin-top: 5px;
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  text-align: center;
-  outline: none;
-  background-color: #2771a3be;
-  color: #fff;
-} */
 
 .newToDoInputList {
   font-style: italic;
-  width: 100%; /* Занимает всю доступную ширину */
-  padding: 8px 12px; /* Уменьшены вертикальные отступы */
-  border: 1px solid #ccc; /* Более нейтральная граница */
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 16px;
   font-weight: 500;
-  text-align: left; /* Текст слева */
+  text-align: left;
   outline: none;
-  background-color: #fff; /* Белый фон */
-  color: #333; /* Темный текст */
-  transition: border-color 0.3s ease; /* Плавное изменение границы */
-  font-family: inherit; /* Наследуем шрифт */
+  background-color: #fff;
+  color: #333;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
 }
 
 .newToDoInputList:focus {
-  border-color: #2772a3; /*  Подсветка при фокусе  */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Легкая тень при фокусе */
+  border-color: #2772a3;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .title {
-  font-size: 20px; /*  Размер шрифта  */
+  font-size: 20px;
   cursor: pointer;
   transition: color 0.3s ease;
-  word-break: break-word; /* Перенос длинных слов */
+  word-break: break-word;
 }
 
 .title:hover {
-  color: #2772a3; /* Цвет при наведении */
+  color: #2772a3;
 }
 
 .completed {
