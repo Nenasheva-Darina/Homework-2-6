@@ -1,0 +1,33 @@
+.boxToDo1Div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.backgroundChanged {
+  background-color: #2772a3;
+}
+
+.boxToDo1Div > img {
+  padding: 10px;
+  border: 1px solid #dcdcdd;
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.boxToDo1Div > button {
+  padding: 10px;
+  border-radius: 8px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.boxToDo1Div > img:hover {
+  border: 1px solid #ffffff;
+}

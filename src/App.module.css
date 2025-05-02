@@ -1,0 +1,54 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.appMenu {
+  top: 0px;
+  position: fixed;
+  background-color: #1e5a88;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Стиль для меню */
+.mainMenu {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 100%; /* Ширина меню как у цитаты */
+}
+
+.mainMenu ul {
+  list-style: none;
+  padding: 0;
+  display: flex; /*  Размещаем пункты горизонтально */
+  justify-content: center; /*  Выравниваем по центру горизонтально  */
+  margin: 0; /* Убираем отступы */
+}
+
+.mainMenu li {
+  margin: 0 10px; /* Добавляем отступы между элементами меню */
+}
+
+.menuLink {
+  display: inline-block; /*  Важно для правильного отображения */
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #1e5a88;
+  background-color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.menuLink:hover {
+  background-color: #373d41;
+  color: #ffffff;
+}
