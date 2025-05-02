@@ -1,27 +1,29 @@
 .boxIMG {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  margin-left: 10px; /* Добавлено пространство слева */
 }
 
 .boxIMG img {
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 8px;
+  padding: 6px;
   background-color: rgba(180, 180, 180, 0.2);
   width: 24px;
   height: 24px;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease; /*  Добавляем transform  */
 }
 
 .boxIMG img:hover {
-  opacity: 0.7;
+  opacity: 0.8; /*  Немного увеличиваем  */
+  transform: scale(1.1); /*  Небольшое увеличение при наведении  */
 }
 
-.newToDoInputList {
+/* .newToDoInputList {
   font-style: italic;
   margin-top: 5px;
-  width: auto;
+  width: 100%;
   padding: 12px;
   border: none;
   border-radius: 8px;
@@ -31,23 +33,41 @@
   outline: none;
   background-color: #2771a3be;
   color: #fff;
+} */
+
+.newToDoInputList {
+  font-style: italic;
+  width: 100%; /* Занимает всю доступную ширину */
+  padding: 8px 12px; /* Уменьшены вертикальные отступы */
+  border: 1px solid #ccc; /* Более нейтральная граница */
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left; /* Текст слева */
+  outline: none;
+  background-color: #fff; /* Белый фон */
+  color: #333; /* Темный текст */
+  transition: border-color 0.3s ease; /* Плавное изменение границы */
+  font-family: inherit; /* Наследуем шрифт */
+}
+
+.newToDoInputList:focus {
+  border-color: #2772a3; /*  Подсветка при фокусе  */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Легкая тень при фокусе */
+}
+
+.title {
+  font-size: 20px; /*  Размер шрифта  */
+  cursor: pointer;
+  transition: color 0.3s ease;
+  word-break: break-word; /* Перенос длинных слов */
+}
+
+.title:hover {
+  color: #2772a3; /* Цвет при наведении */
 }
 
 .completed {
-  text-align: center;
-  width: 450px;
-  color: rgb(8, 38, 113);
-  position: relative;
-  display: inline-block;
-}
-
-.completed::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 30px;
-  width: 80%;
-  height: 1.5px;
-  background-color: rgb(8, 38, 113);
-  transform: translateY(-50%);
+  color: #777;
+  text-decoration: line-through;
 }

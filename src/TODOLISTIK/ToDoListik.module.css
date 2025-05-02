@@ -1,80 +1,97 @@
+body {
+  font-family: 'Roboto', sans-serif; /* Современный шрифт */
+  color: #333;
+}
+
 .boxToDo {
   position: relative;
   width: 80%;
   max-width: 800px;
   margin-top: 130px;
-  padding: 20px;
-  border-radius: 15px;
+  padding: 30px;
+  border-radius: 20px;
   background-color: #fff;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Мягкая тень */
 }
 
 .errorBlock {
   background-color: #ffffff;
-  font-size: 20px;
-  color: red;
+  font-size: 18 px;
+  color: rgb(207, 17, 17);
 }
 
 h1 {
-  color: #22608a;
-  margin-bottom: 20px;
-  font-size: 28px;
+  /* color: #22608a; */
+  color: #2772a3;
+  margin-bottom: 25px;
+  font-size: 32px;
+  font-weight: 500;
 }
 
 .boxToDo1Div {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .boxToDo1Div > img {
-  padding: 10px;
-  border: 1px solid #dcdcdd;
+  padding: 12px;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 5px;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
 }
 .boxToDo1Div > button {
-  padding: 10px;
-  border-radius: 8px;
+  padding: 12px 25px;
+  border-radius: 10px;
   margin-left: 10px;
   margin-right: 10px;
-  margin-top: 15px;
   cursor: pointer;
-}
-.boxToDo1Div > img:hover {
-  border: 1px solid #ffffff;
+  background-color: #2772a3;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
-.completed {
-  background-color: #9bcef3da;
+.boxToDo1Div > button:hover {
+  background-color: #1e5a88;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень при наведении */
+}
+
+.boxToDo1Div > img:hover {
+  border-color: #2772a3;
+  transform: scale(1.1);
 }
 
 .newToDoInput {
   margin-top: 5px;
   width: 95%;
-  padding: 12px;
+  padding: 13px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 18px;
   text-align: center;
   outline: none;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Плавные переходы */
+  /* margin-bottom: 20px; Отступ снизу */
 }
 
 .newToDoInput:focus {
   border-color: #2772a3;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Более выраженная тень при фокусе */
 }
 
 .newToDoInput::placeholder {
-  color: #999;
+  color: #ccc;
 }
 
 .button {
@@ -82,17 +99,26 @@ h1 {
   background-color: #2772a3;
   color: white;
   border: none;
-  border-radius: 8px;
-  padding: 12px 25px;
+  border-radius: 10px;
+  padding: 14px 30px;
   font-size: 18px;
   cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.2s ease;
+  /* margin-top: 10px; */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .button:hover {
   background-color: #1e5a88;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Более заметная тень при наведении */
+}
+
+.toDoList.completed {
+  background-color: #b12b2b; /*  Светло-серый цвет  */
+}
+
+.toDoList.completed img {
+  /*  Приглушаем иконки внутри  */
+  opacity: 0.5;
 }
 
 /*
@@ -123,10 +149,10 @@ h1 {
 
 .toDoList {
   background-color: #fff;
-  border-radius: 10px;
-  padding: 15px;
+  border-radius: 12px;
+  padding: 20px;
   margin-bottom: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Более мягкая тень */
   font-size: 18px;
   width: 95%;
   position: relative;
@@ -134,8 +160,11 @@ h1 {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #eee;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.3s ease; /* Добавляем плавность */
   overflow: hidden;
+  text-decoration: none;
+  color: inherit; /*  Наследуем цвет от родителя  */
 }
 
 .toDoList::before {
@@ -152,18 +181,19 @@ h1 {
 
 .toDoList:hover {
   background-color: #f5f5f5;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px); /* Небольшое смещение вверх при наведении */
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15); /* Более выраженная тень при наведении */
 }
 
 .boxCheck {
-  width: 24px;
-  height: 24px;
-  margin-left: 10px;
+  width: 28px;
+  height: 28px;
+  margin-left: 15px;
   cursor: pointer;
 }
 
 .content {
-  margin-top: 20px;
+  margin-top: 25px;
 }
 .content span {
   text-align: right;
@@ -175,4 +205,18 @@ h1 {
 
 .backgroundChanged {
   background-color: #2772a3;
+}
+
+.completed {
+  background-color: #9bcef3da; /* Используем переменную */
+  text-decoration: line-through; /* Зачеркивание выполненных задач */
+  color: #777; /* Более приглушенный цвет для выполненных */
+}
+
+.checkboxContainer {
+  margin-right: 10px; /*  Добавьте отступ справа от чекбокса  */
+  cursor: pointer; /*  Измените курсор на указатель  */
+  display: flex; /*  Используйте flexbox для центрирования  */
+  align-items: center; /* Центрирование по вертикали */
+  /* background-color: #2772a3; */
 }

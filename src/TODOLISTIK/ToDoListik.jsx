@@ -175,12 +175,17 @@ export const ToDoListik = () => {
           {alphabetically
             ? sorterFilterArr().map(({ id, title, completed }) => (
                 <NavLink key={id} to={`task/${id}`} className={styles.toDoList}>
-                  <input
-                    className={styles.boxCheck}
-                    type="checkbox"
-                    checked={completed}
-                    onClick={() => handleCheckboxChange(id)}
-                  />
+                  <div
+                    className={styles.checkboxContainer} //  Оборачиваем чекбокс в div
+                    onClick={(e) => e.stopPropagation()} // Останавливаем распространение клика
+                  >
+                    <input
+                      className={styles.boxCheck}
+                      type="checkbox"
+                      checked={completed}
+                      onClick={() => handleCheckboxChange(id)}
+                    />
+                  </div>
 
                   <EDitDELit
                     key={id}
@@ -195,12 +200,17 @@ export const ToDoListik = () => {
             : searchFlag
             ? newFilterArrToDo.map(({ id, title, completed }) => (
                 <NavLink key={id} to={`task/${id}`} className={styles.toDoList}>
-                  <input
-                    className={styles.boxCheck}
-                    type="checkbox"
-                    checked={completed}
-                    onClick={() => handleCheckboxChange(id)}
-                  />
+                  <div
+                    className={styles.checkboxContainer} // Оборачиваем чекбокс в div
+                    onClick={(e) => e.stopPropagation()} // Останавливаем распространение клика
+                  >
+                    <input
+                      className={styles.boxCheck}
+                      type="checkbox"
+                      checked={completed}
+                      onClick={() => handleCheckboxChange(id)}
+                    />
+                  </div>
 
                   <EDitDELit
                     key={id}
@@ -214,12 +224,17 @@ export const ToDoListik = () => {
               ))
             : toDoList.map(({ id, title, completed }) => (
                 <NavLink key={id} to={`task/${id}`} className={styles.toDoList}>
-                  <input
-                    className={styles.boxCheck}
-                    type="checkbox"
-                    checked={completed}
-                    onClick={() => handleCheckboxChange(id)}
-                  />
+                  <div
+                    className={styles.checkboxContainer} // Оборачиваем чекбокс в div
+                    onClick={(e) => e.stopPropagation()} // Останавливаем распространение клика
+                  >
+                    <input
+                      className={styles.boxCheck}
+                      type="checkbox"
+                      checked={completed}
+                      onClick={() => handleCheckboxChange(id)}
+                    />
+                  </div>
 
                   <EDitDELit
                     key={id}
