@@ -1,0 +1,82 @@
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 6px solid #e0e0e0;
+  border-top-color: #2772a3;
+  border-radius: 50%;
+  animation: loader 1s infinite linear;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.boxToDo {
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+  margin: 50px auto;
+  margin-top: 200px;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #fff;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.content {
+  text-align: left;
+  margin-top: 20px;
+}
+
+h1 {
+  color: #22608a;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.boxToDo1Div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.boxToDo1Div > img {
+  padding: 10px;
+  border: 1px solid #dcdcdd;
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.boxToDo1Div > button {
+  padding: 10px;
+  border-radius: 8px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.boxToDo1Div > img:hover {
+  border: 1px solid #ffffff;
+}
+
+.backgroundChanged {
+  background-color: #2772a3;
+}

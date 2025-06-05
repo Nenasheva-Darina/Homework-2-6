@@ -1,0 +1,89 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.quote {
+  font-size: 2em;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  max-width: 80%;
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.quote span {
+  display: inline;
+}
+
+.quote .boldPart {
+  font-size: 40px;
+  display: block;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+.color {
+  color: #1e5a88;
+}
+
+.quote .regularPart {
+  font-size: 17px;
+  display: block;
+  font-weight: 200;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.author {
+  font-size: 17px;
+  font-weight: 500;
+
+  color: #3f3e3e;
+  font-style: italic;
+  text-align: right;
+  width: 80%;
+}
+
+.menu {
+  margin-top: 30px;
+}
+.menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menuItem {
+  margin-bottom: 10px;
+}
+
+.menuLink {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: #ffffff;
+  background-color: #373d41;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.menuLink:hover {
+  background-color: #1e5a88;
+}
+
+@media (max-width: 768px) {
+  .quote {
+    font-size: calc(2em * 0.8);
+  }
+  .author {
+    font-size: 1em;
+  }
+}
