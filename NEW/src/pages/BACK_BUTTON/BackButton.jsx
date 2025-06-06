@@ -5,11 +5,15 @@ import styles from './BackButton.module.css';
 export const BackButton = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [historyStack, setHistoryStack] = useState([]);
+  const [historyStack, setHistoryStack] = useState([]); // История посещенных страниц
   const [canGoBack, setCanGoBack] = useState(false);
+
+  console.log('Текущий URL', location);
+  console.log('История посещения', historyStack);
 
   useEffect(() => {
     setHistoryStack((prev) => {
+      console.log('prev', prev);
       const newStack = [...prev, location.pathname];
 
       return newStack.length > 5 ? newStack.slice(1) : newStack;

@@ -53,6 +53,8 @@ export const SelectedTask = () => {
     setEditModeInputToDo(true);
   };
 
+  console.log('id', id);
+
   //     const textClasses = completed
   // 	  ? `${styles.title} ${styles.completed}`
   // 	  : styles.title;
@@ -69,13 +71,6 @@ export const SelectedTask = () => {
         completed={todo.completed}
         onEdit={handleCheckboxChange}
       />
-
-      {/* <input
-        className={styles.boxCheck}
-        type="checkbox"
-        // checked={completed}
-        // onChange={handleCheckboxChange}
-      /> */}
 
       <span className={styles.title}>{todo.title}</span>
 

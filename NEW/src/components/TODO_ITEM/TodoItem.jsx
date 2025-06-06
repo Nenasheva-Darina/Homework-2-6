@@ -1,5 +1,5 @@
 import { React, useRef, useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styles from './TodoItem.module.css';
 import { CheckMark } from '../CHECK_MARK/CheckMark';
 
@@ -29,7 +29,6 @@ export const TodoItem = ({ onDelete, id, title, completed, onEdit }) => {
   };
 
   const handleCheckboxChange = () => {
-    console.log('Вызов handleCheckboxChange');
     onEdit({ id, completed: !completed, title });
   };
 
@@ -61,6 +60,7 @@ export const TodoItem = ({ onDelete, id, title, completed, onEdit }) => {
           completed={completed}
           onEdit={handleCheckboxChange}
         />
+
         <NavLink to={`/todo-list/task/${id}`}>
           <div key={id}>
             {/* <input
@@ -76,30 +76,30 @@ export const TodoItem = ({ onDelete, id, title, completed, onEdit }) => {
 
             {/* {editModeInputToDo ? (
           <input
-            type="text"
+		  type="text"
             ref={inputRef}
             defaultValue={title}
             className={styles.newToDoInputList}
             onBlur={handleSave}
             onKeyDown={handleKeyDown}
-          />
-        ) : (
-          <span className={textClasses} onClick={(e) => e.stopPropagation()}>
-            {title}
-          </span>
-        )} */}
+			/>
+			) : (
+				<span className={textClasses} onClick={(e) => e.stopPropagation()}>
+				{title}
+				</span>
+				)} */}
 
             {/* <div className={styles.boxIMG}>
         <img
-          src="/images/delete.png"
-          alt="Mark as Complete"
-          onClick={requestDeleteToDo}
+		src="/images/delete.png"
+		alt="Mark as Complete"
+		onClick={requestDeleteToDo}
         />
-
+		
         <img
-          src="/images/edit.png"
-          alt="Mark as Complete"
-          onClick={requestEditToDo}
+		src="/images/edit.png"
+		alt="Mark as Complete"
+		onClick={requestEditToDo}
         />
       </div> */}
           </div>

@@ -1,6 +1,6 @@
 import { Routes, Route, NavLink, Outlet } from 'react-router-dom';
 import styles from './App.module.css';
-import { BackButton, Home, NavigationMenu } from './pages/index.js';
+import { NavigationMenu } from './pages/index.js';
 
 export const App = () => {
   return (
