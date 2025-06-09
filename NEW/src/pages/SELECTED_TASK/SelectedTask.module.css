@@ -6,7 +6,7 @@
   margin-top: 200px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   font-size: 18px;
-  width: 80%;
+  width: 100%;
   max-width: 800px;
   position: relative;
   display: flex;
@@ -15,6 +15,7 @@
   border-bottom: 1px solid #eee;
   transition: background-color 0.3s ease;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .toDoList::before {
@@ -38,26 +39,12 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-.completed {
-  text-decoration: line-through;
-  font-size: 0.9em;
-  color: #252525;
-  opacity: 0.7;
-}
-
-.completedToDo {
-  background-color: #2771a383;
-}
-
-.completedToDo:hover {
-  background-color: #0f4e7986;
-}
-
 .boxIMG {
   display: flex;
   align-items: center;
   gap: 10px;
   margin: 10px;
+  flex-shrink: 0;
 }
 
 .boxIMG img {
@@ -74,36 +61,22 @@
   opacity: 0.7;
 }
 
-.newToDoInputList {
-  font-style: italic;
-  margin-top: 5px;
-  width: auto;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  text-align: center;
-  outline: none;
-  background-color: #2771a3be;
-  color: #fff;
-}
-
-.boxCheck {
-  width: 24px;
-  height: 24px;
-  margin-left: 10px;
-  margin-right: 10px;
-  cursor: pointer;
-}
-
 .title {
   font-style: italic;
-  text-align: center;
-  padding: 10px 10px 10px 10px;
+  text-align: inherit;
+  padding: 10px;
   font-size: 20px;
-  max-width: 70%;
-  max-height: max-content;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  border: none;
+  width: 80%;
+  text-align: center;
+}
+
+.newToDoInputList {
+  font-style: italic;
+  text-align: inherit;
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  width: 80%;
+  text-align: center;
 }

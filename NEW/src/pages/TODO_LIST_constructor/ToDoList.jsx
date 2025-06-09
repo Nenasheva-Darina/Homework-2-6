@@ -14,12 +14,11 @@ export const ToDoList = () => {
     toDoList,
     isLoadingLoader,
     requestAddNewToDo,
-    requestDeleteToDo,
-    requestUpdateToDoList,
     setSearch: setSearchFilter,
     sortingOption,
     setSortingOption,
-    getTodoById,
+    onDeleteTodo,
+    onUpdateTodo,
   } = UseToDos();
 
   const [searchInputValue, setSearchInputValue] = useState(''); // Значения инпута ввода поиска
@@ -38,6 +37,12 @@ export const ToDoList = () => {
   const handleSearchInputChange = (newValue) => {
     setSearchInputValue(newValue);
   };
+
+  const filtred = alphabetically
+    ? sorterFilterArr()
+    : searchFlag
+    ? newFilterArrToDo
+    : toDoList;
 
   return (
     <>
@@ -71,41 +76,14 @@ export const ToDoList = () => {
         <div className={styles.content}>
           {isLoadingLoader ? <div className={styles.loader}></div> : null}
 
-          {alphabetically
-            ? sorterFilterArr().map(({ id, title, completed }) => (
-                <TodoItem
-                  // getTodoById={getTodoById}
-                  key={id}
-                  onDelete={requestDeleteToDo}
-                  id={id}
-                  title={title}
-                  completed={completed}
-                  onEdit={requestUpdateToDoList}
-                />
-              ))
-            : searchFlag
-            ? newFilterArrToDo.map(({ id, title, completed }) => (
-                <TodoItem
-                  // getTodoById={getTodoById}
-                  key={id}
-                  onDelete={requestDeleteToDo}
-                  id={id}
-                  title={title}
-                  completed={completed}
-                  onEdit={requestUpdateToDoList}
-                />
-              ))
-            : toDoList.map(({ id, title, completed }) => (
-                <TodoItem
-                  // getTodoById={getTodoById}
-                  key={id}
-                  onDelete={requestDeleteToDo}
-                  id={id}
-                  title={title}
-                  completed={completed}
-                  onEdit={requestUpdateToDoList}
-                />
-              ))}
+          {filtred.map((todo) => (
+            <TodoItem
+              key={todo.id}
+              {...todo}
+              onDelete={onDeleteTodo}
+              onEdit={onUpdateTodo}
+            />
+          ))}
         </div>
       </div>
     </>

@@ -1,95 +1,99 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { UseToDos } from '../../hooks/UseToDos';
+import { useEffect, useState, useRef } from 'react';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import styles from './SelectedTask.module.css';
-import { CheckMark } from '../../components';
-
-// { onDelete, id, title, completed, onEdit }
+import { UseToDo } from '../../hooks/UseToDo';
 
 export const SelectedTask = () => {
   const { id } = useParams();
-  const { getTodoById, requestUpdateToDoList } = UseToDos();
-  const [todo, setTodo] = useState(null);
+  const navigate = useNavigate();
+  const [activeEdit, setActiveEdit] = useState(false);
+  const [inputValue, setInputValue] = useState('');
 
-  //   const [editModeInputToDo, setEditModeInputToDo] = useState(false);
-  //   const [isDeleting, setIsDeleting] = useState(false);
+  if (!id) return <Navigate to="/404" />;
+
+  const { todo, loading, requestDeleteToDo, requestUpdateTodo, fetchTodo } =
+    UseToDo(id);
 
   useEffect(() => {
     if (id) {
-      const foundTodo = getTodoById(id);
-      setTodo(foundTodo);
+      fetchTodo();
     }
-  }, [id, getTodoById]);
+  }, [id]);
 
-  const handleCheckboxChange = async () => {
-    // Определяем handleCheckboxChange
-    if (!todo) return; // Защита от ошибки
+  useEffect(() => {
+    if (todo) {
+      setInputValue(todo.title);
+    }
+  }, [todo]);
 
-    const updatedTodo = { ...todo, completed: !todo.completed }; // Создаем обновленную задачу
-    try {
-      await requestUpdateToDoList(updatedTodo); // Вызываем requestUpdateToDoList
-      setTodo(updatedTodo); // Обновляем состояние
-    } catch (error) {
-      console.error('Ошибка обновления задачи:', error);
-      //  Обработка ошибки (например, отображение сообщения)
+  const inputRef = useRef(null);
+
+  const focusInput = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
     }
   };
+
+  useEffect(() => {
+    if (activeEdit) {
+      focusInput();
+    }
+  }, [activeEdit]);
+
+  const handleDelete = async () => {
+    await requestDeleteToDo();
+    navigate('/todo-list');
+  };
+
+  const handleSave = async () => {
+    await requestUpdateTodo({ title: inputValue });
+    setActiveEdit(false);
+  };
+
+  if (loading) return <p>Loading...</p>;
 
   if (!todo) {
-    return <p>Задача не найдена</p>;
+    return <p>Такой задачи не существует ...</p>;
   }
 
-  const requestDeleteToDo = async () => {
-    setIsDeleting(true);
-    try {
-      await onDelete(id);
-    } finally {
-      setIsDeleting(false);
+  const requestEditToDo = async (event) => {
+    console.log(inputValue);
+    event.stopPropagation();
+    setActiveEdit(true);
+  };
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleSave();
     }
   };
-
-  const requestEditToDo = async (event) => {
-    event.stopPropagation();
-    setEditModeInputToDo(true);
-  };
-
-  console.log('id', id);
-
-  //     const textClasses = completed
-  // 	  ? `${styles.title} ${styles.completed}`
-  // 	  : styles.title;
-
-  //    const divClasses = completed
-  // 	  ? `${styles.toDoList} ${styles.completedToDo}`
-  // 	  : styles.toDoList;
 
   return (
     <div key={id} className={styles.toDoList}>
-      <CheckMark
-        id={id}
-        title={todo.title}
-        completed={todo.completed}
-        onEdit={handleCheckboxChange}
-      />
-
-      <span className={styles.title}>{todo.title}</span>
-
-      {/* <input
-			type="text"
-			value={todo.title}
-			// ref={inputRef}
-			// defaultValue={title}
-			// className={styles.newToDoInputList}
-			// onBlur={handleSave}
-			// onKeyDown={handleKeyDown}
-			/>
-			 */}
-
+      {activeEdit ? (
+        <input
+          type="text"
+          value={inputValue}
+          ref={inputRef}
+          defaultValue={todo.title}
+          className={styles.newToDoInputList}
+          onBlur={handleSave}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+        />
+      ) : (
+        <span className={styles.title}>{todo.title}</span>
+      )}
       <div className={styles.boxIMG}>
         <img
           src="/images/delete.png"
           alt="Mark as Complete"
-          onClick={requestDeleteToDo}
+          onClick={handleDelete}
         />
 
         <img

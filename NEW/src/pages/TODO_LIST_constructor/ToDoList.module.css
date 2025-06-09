@@ -12,15 +12,6 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes loader {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .boxToDo {
   position: relative;
   width: 80%;
@@ -30,13 +21,16 @@
   padding: 20px;
   border-radius: 15px;
   background-color: #fff;
-  text-align: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .content {
+  background-color: #fff;
+  margin: 20px 10px;
+  padding: 10px;
+  box-sizing: border-box;
   text-align: left;
-  margin-top: 20px;
+  width: 95%;
 }
 
 h1 {
@@ -79,4 +73,13 @@ h1 {
 
 .backgroundChanged {
   background-color: #2772a3;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

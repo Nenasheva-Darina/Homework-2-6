@@ -1,51 +1,15 @@
-import { React, useRef, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styles from './TodoItem.module.css';
 import { CheckMark } from '../CHECK_MARK/CheckMark';
+import { UseToDo } from '../../hooks/UseToDo';
 
-export const TodoItem = ({ onDelete, id, title, completed, onEdit }) => {
-  const [editModeInputToDo, setEditModeInputToDo] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const inputRef = useRef(null);
+export const TodoItem = ({ id, title, completed, onEdit }) => {
+  const { requestUpdateTodo } = UseToDo(id);
 
-  useEffect(() => {
-    if (editModeInputToDo) {
-      inputRef.current.focus();
-    }
-  }, [editModeInputToDo]);
-
-  const requestDeleteToDo = async () => {
-    setIsDeleting(true);
-    try {
-      await onDelete(id);
-    } finally {
-      setIsDeleting(false);
-    }
+  const handleUpdate = () => {
+    onEdit(id, !completed);
+    requestUpdateTodo({ completed: !completed });
   };
-
-  const requestEditToDo = async (event) => {
-    event.stopPropagation();
-    setEditModeInputToDo(true);
-  };
-
-  const handleCheckboxChange = () => {
-    onEdit({ id, completed: !completed, title });
-  };
-
-  const handleSave = () => {
-    onEdit({ id, completed, title: inputRef.current.value });
-    setEditModeInputToDo(false);
-  };
-
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      handleSave();
-    }
-  };
-
-  const textClasses = completed
-    ? `${styles.title} ${styles.completed}`
-    : styles.title;
 
   const divClasses = completed
     ? `${styles.toDoList} ${styles.completedToDo}`
@@ -58,52 +22,12 @@ export const TodoItem = ({ onDelete, id, title, completed, onEdit }) => {
           id={id}
           title={title}
           completed={completed}
-          onEdit={handleCheckboxChange}
+          onEdit={handleUpdate}
         />
 
-        <NavLink to={`/todo-list/task/${id}`}>
-          <div key={id}>
-            {/* <input
-          className={styles.boxCheck}
-          type="checkbox"
-          checked={completed}
-          onChange={handleCheckboxChange}
-        /> */}
-
-            <span className={textClasses} onClick={(e) => e.stopPropagation()}>
-              {title}
-            </span>
-
-            {/* {editModeInputToDo ? (
-          <input
-		  type="text"
-            ref={inputRef}
-            defaultValue={title}
-            className={styles.newToDoInputList}
-            onBlur={handleSave}
-            onKeyDown={handleKeyDown}
-			/>
-			) : (
-				<span className={textClasses} onClick={(e) => e.stopPropagation()}>
-				{title}
-				</span>
-				)} */}
-
-            {/* <div className={styles.boxIMG}>
-        <img
-		src="/images/delete.png"
-		alt="Mark as Complete"
-		onClick={requestDeleteToDo}
-        />
-		
-        <img
-		src="/images/edit.png"
-		alt="Mark as Complete"
-		onClick={requestEditToDo}
-        />
-      </div> */}
-          </div>
-        </NavLink>
+        <Link to={`task/${id}`}>
+          <span className={styles.title}>{title}</span>
+        </Link>
       </div>
     </>
   );

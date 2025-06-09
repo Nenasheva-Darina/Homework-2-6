@@ -65,44 +65,18 @@ export const UseToDos = () => {
     }
   };
 
-  const requestDeleteToDo = async (id) => {
-    try {
-      const newToDODelete = await fetch(`${BASE_URL}/${id}`, {
-        method: 'DELETE',
-      });
-      setToDoList((prevToDoList) =>
-        prevToDoList.filter((todo) => todo.id !== id)
-      );
-      console.log('Дело было удалено:', id);
-    } catch (error) {
-      console.log('Ошибочка при удалении задачи:', error);
-    }
+  const onDeleteTodo = (id) => {
+    setToDoList(toDoList.filter((todo) => todo.id !== id));
   };
 
-  const requestUpdateToDoList = async (updateTodo) => {
-    try {
-      const response = await fetch(`${BASE_URL}/${updateTodo.id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json;charset=utf-8' },
-        body: JSON.stringify(updateTodo),
-      });
-
-      const updatedToDo = await response.json();
-
-      setToDoList((prevToDoList) =>
-        prevToDoList.map((todo) =>
-          todo.id === updatedToDo.id ? { ...todo, ...updatedToDo } : todo
-        )
-      );
-
-      console.log('Задача обновлена:', updatedToDo);
-    } catch (error) {
-      console.log('Ошибочка при обновлении задачи:', error);
-    }
+  const onUpdateTodo = (id, completed) => {
+    setToDoList(
+      toDoList.map((todo) => (todo.id === id ? { ...todo, completed } : todo))
+    );
   };
 
   const getTodoById = (id) => {
-    return toDoList.find((todo) => todo.id.toString() === id); 
+    return toDoList.find((todo) => todo.id.toString() === id);
   };
 
   return {
@@ -110,11 +84,11 @@ export const UseToDos = () => {
     isLoadingLoader,
     fetchToDos,
     requestAddNewToDo,
-    requestDeleteToDo,
-    requestUpdateToDoList,
     setSearch,
     sortingOption,
     setSortingOption,
-	getTodoById
+    getTodoById,
+    onDeleteTodo,
+    onUpdateTodo,
   };
 };
