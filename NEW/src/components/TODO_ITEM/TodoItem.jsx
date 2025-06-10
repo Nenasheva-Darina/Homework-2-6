@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './TodoItem.module.css';
 import { CheckMark } from '../CHECK_MARK/CheckMark';
 import { UseToDo } from '../../hooks/UseToDo';
